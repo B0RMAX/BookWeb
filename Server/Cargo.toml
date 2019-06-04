@@ -1,0 +1,27 @@
+[package]
+name = "server"
+version = "0.1.0"
+authors = ["Bozhidar Stoyanov <bojidar.b.stoyanov@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+rayon = "1.0.3"
+rocket = "0.4.0"
+json = "0.11.13"
+serde = { version = "1.0.90", features = ["derive"] }
+serde_json = "1.0.39"
+
+[dependencies.rocket_contrib]
+version = "0.4.0"
+default-features = false
+features = ["serve", "json"]
+
+[profile.dev]
+debug = true
+
+[profile.release]
+opt-level = 3
+debug = false
+lto = true
+overflow-checks = false
+codegen-units = 10
